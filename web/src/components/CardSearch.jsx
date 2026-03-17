@@ -7,14 +7,18 @@ export default function CardSearch({ onSelect, label = 'Add Card' }) {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState(null);
 
   async function search(e) {
     e.preventDefault();
     if (!query.trim()) return;
     setLoading(true);
+    setError(null);
     try {
       const cards = await searchCards(query);
       setResults(cards);
+    } catch (err) {
+      setError('Search failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -53,6 +57,7 @@ export default function CardSearch({ onSelect, label = 'Add Card' }) {
             {loading ? '...' : 'Search'}
           </button>
         </form>
+        {error && <div className={styles.error}>{error}</div>}
         <div className={styles.results}>
           {results.map((card) => (
             <button key={card.id} className={styles.result} onClick={() => select(card)}>

@@ -37,7 +37,7 @@ async function upsertCard(card) {
 }
 
 export async function searchCards(q) {
-  const res = await fetch(`${BASE_URL}/cards?q=name:"${encodeURIComponent(q)}"&pageSize=20`, {
+  const res = await fetch(`${BASE_URL}/cards?q=${encodeURIComponent(`name:"${q}"`)}&pageSize=20`, {
     headers: headers(),
   });
   if (!res.ok) throw new Error(`PokéTCG error: ${res.status}`);

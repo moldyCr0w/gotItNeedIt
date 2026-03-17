@@ -46,6 +46,15 @@
 .searchBtn { background: var(--accent); color: #fff; white-space: nowrap; }
 .searchBtn:hover { background: var(--accent-hover); }
 
+.error {
+  margin: 0 24px;
+  padding: 10px 12px;
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
 .results {
   overflow-y: auto;
   padding: 0 24px 16px;
